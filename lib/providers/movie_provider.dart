@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:movie_application/core/env/api_keys.dart';
-import 'package:movie_application/core/env/app_url.dart';
+import 'package:movie_application/core/env/environment_variables.dart';
+import 'package:movie_application/core/app_urls.dart' show AppUrls;
 import 'package:movie_application/model/movie_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,8 +18,8 @@ class MovieProvider extends ChangeNotifier {
       notifyListeners();
 
       // Make the API request to fetch movie data
-      final response = await http
-          .get(Uri.parse("${AppUrls.movieListUrl}?api_key=${APIKeys.apiKey}"));
+      final response = await http.get(Uri.parse(
+          "${AppUrls.movieListUrl}?api_key=${EnvironmentVariables.moviesApiKey}"));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

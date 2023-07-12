@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:movie_application/core/assets.dart';
-import 'package:movie_application/screens/user_register_Screen.dart';
+import 'package:movie_application/screens/register_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const UserRegisterScreen()),
+          MaterialPageRoute(builder: (context) => const RegisterScreen()),
         );
       },
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_application/screens/user_register_Screen.dart';
+import 'package:movie_application/screens/register_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -7,7 +7,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: UserRegisterScreen(),
+      body: RegisterScreen(),
     );
   }
 }
