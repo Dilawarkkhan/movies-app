@@ -56,14 +56,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 60,
-            ),
             const Center(
               child: Text(
                 "New User Registration",
@@ -74,40 +72,49 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 60,
-            ),
+            const SizedBox(height: 40),
             Form(
               key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
                     controller: _firstNameController,
-                    decoration:
-                        const InputDecoration(label: Text('First Name')),
+                    decoration: const InputDecoration(
+                      labelText: 'First Name',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: _lastNameController,
-                    decoration: const InputDecoration(label: Text('Last Name')),
+                    decoration: const InputDecoration(
+                      labelText: 'Last Name',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: _emailController,
-                    decoration:
-                        const InputDecoration(label: Text('Email Address')),
+                    decoration: const InputDecoration(
+                      labelText: 'Email Address',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: AppValidator.isEmailValid,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   TextFormField(
                     obscureText: true,
                     controller: _passwordController,
-                    decoration: const InputDecoration(label: Text('Password')),
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      // Add additional styling properties as desired
+                    ),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
@@ -123,6 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     : const Text("Register"),
               ),
             ),
+            const SizedBox(height: 20),
             Center(
               child: TextButton(
                 onPressed: () {
@@ -132,7 +140,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         builder: (context) => const LoginScreen()),
                   );
                 },
-                child: const Text('If you have already account please SignIn'),
+                child: const Text(
+                    'If you already have an account, please Sign In'),
               ),
             )
           ],
