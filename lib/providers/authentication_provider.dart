@@ -26,7 +26,7 @@ class AuthenticationProvider extends ChangeNotifier {
       var jsonData = jsonDecode(response.body);
       // if response status code is  200
       if (response.statusCode == 200) {
-        _userData = jsonData;
+        _userData = jsonData ;
         _setLoader(false);
         return true;
       } else {
