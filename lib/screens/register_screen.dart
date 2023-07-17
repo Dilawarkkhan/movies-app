@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
-
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -56,12 +55,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 60,
+            ),
             const Center(
               child: Text(
                 "New User Registration",
@@ -72,49 +73,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(
+              height: 60,
+            ),
             Form(
               key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
                     controller: _firstNameController,
-                    decoration: const InputDecoration(
-                      labelText: 'First Name',
-                      border: OutlineInputBorder(),
-                    ),
+                    decoration:
+                        const InputDecoration(label: Text('First Name')),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   TextFormField(
                     controller: _lastNameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Last Name',
-                      border: OutlineInputBorder(),
-                    ),
+                    decoration: const InputDecoration(label: Text('Last Name')),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   TextFormField(
                     controller: _emailController,
-                    decoration: const InputDecoration(
-                      labelText: 'Email Address',
-                      border: OutlineInputBorder(),
-                    ),
+                    decoration:
+                        const InputDecoration(label: Text('Email Address')),
                     validator: AppValidator.isEmailValid,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   TextFormField(
                     obscureText: true,
                     controller: _passwordController,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(),
-                      // Add additional styling properties as desired
-                    ),
+                    decoration: const InputDecoration(label: Text('Password')),
                     validator: AppValidator.isEmpty,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
@@ -130,7 +122,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     : const Text("Register"),
               ),
             ),
-            const SizedBox(height: 20),
             Center(
               child: TextButton(
                 onPressed: () {
@@ -140,8 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         builder: (context) => const LoginScreen()),
                   );
                 },
-                child: const Text(
-                    'If you already have an account, please Sign In'),
+                child: const Text('If you have already account please SignIn'),
               ),
             )
           ],
@@ -150,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  _registerUser() async {
+          _registerUser() async {
     // If form is completely validated, then Register
     if (_formKey.currentState!.validate()) {
       Map<String, dynamic> data = {
